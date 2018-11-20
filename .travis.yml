@@ -6,7 +6,7 @@ services:
   - docker
 
 script:
-  - if [ "${TRAVIS_BRANCH}" != *v ]; then export BUILD_TAG=latest; else export BUILD_TAG=${TRAVIS_BRANCH}; fi
+  - if [[ "${TRAVIS_BRANCH}" =~ ^v.* ]]; then export BUILD_TAG=${TRAVIS_BRANCH}; else export BUILD_TAG=latest; fi
   - docker build -t tnwhitwell/logspout-logstash:${TRAVIS_BRANCH} --build-arg LOGSPOUT_VERSION=${BUILD_TAG} .
   - docker tag tnwhitwell/logspout-logstash:${TRAVIS_BRANCH} tnwhitwell/logspout-logstash:latest
 deploy:
