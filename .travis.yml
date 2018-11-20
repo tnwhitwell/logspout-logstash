@@ -13,4 +13,4 @@ deploy:
   provider: script
   script: bash scripts/docker_push.sh
   on:
-    branch: ${TRAVIS_BRANCH} == "master" || -n ${TRAVIS_TAG}
+    condition: ${TRAVIS_BRANCH} == "master" || -n ${TRAVIS_TAG}
