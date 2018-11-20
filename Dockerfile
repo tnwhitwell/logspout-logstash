@@ -1,1 +1,2 @@
-FROM gliderlabs/logspout:v3.2.5
+ARG LOGSPOUT_VERSION
+FROM gliderlabs/logspout:${LOGSPOUT_VERSION}
